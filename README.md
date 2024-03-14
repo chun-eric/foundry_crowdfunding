@@ -1,6 +1,6 @@
-Setting up Foundry
+#Setting up Foundry
 
-Step 1: Install Windows Terminal and Windows System for Linux
+##Step 1: Install Windows Terminal and Windows System for Linux
 
 First download windows terminal from the Microsoft Store. 
 
@@ -15,7 +15,7 @@ Then type in the below code:
 wsl --install
 ```
 
-![img-1]
+![img-1]()
 
 
 It will ask you to make a new username and password.
@@ -23,7 +23,7 @@ Fill in the new username and password information.
 
 Wait a couple of minutes. The installation should be done. 
 
-![img-2]
+![img-2]()
 
 
 Reboot the system.
@@ -39,12 +39,12 @@ We need VS code to be compatible with WSL.
 In VS code download the following extension, 
 remote development. 
 
-![img-3]
+![img-3]()
 
 In the bottom left corner there is "Open remote Window" icon. 
 
 
-![img-4]
+![img-4]()
 
 
 We can click it and run WSL from here. But there is a better way. 
