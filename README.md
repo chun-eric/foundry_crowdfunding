@@ -1,6 +1,6 @@
-#Setting up Foundry
+# Setting up Foundry
 
-##Step 1: Install Windows Terminal and Windows System for Linux
+## Step 1: Install Windows Terminal and Windows System for Linux
 
 First download windows terminal from the Microsoft Store. 
 
