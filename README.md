@@ -383,6 +383,12 @@ This will add the environment variables in the shell.
 I have been getting an error message when executing the script:
 ```contract source info format must be `<path>:<contractname>`or`<contractname>`
 
+**Solution fix**
+There was a typo in my command line.
+Okay the transaction has gone through now. Great.
+
+![img-16]
+
 For real production that uses real money, this is not good practice but for development purposes this is fine for now. We will discuss a better way to keep our private keys more secure.
 
 **Important side note**
