@@ -255,7 +255,7 @@ Open and login to Metamask.
 
 The click the three dots on the top right.
 
-![img-6]
+<a href="https://ibb.co/1GqHKKR"><img src="https://i.ibb.co/Ldt4669/6.png" alt="6" border="0"></a>
 
 Go to:
 
@@ -263,19 +263,21 @@ Go to:
 Settings > Networks > Add Network
 ```
 
-![img-7]
-![img-8]
-![img-9]
+<a href="https://ibb.co/3dHdjmy"><img src="https://i.ibb.co/9gjg1H9/7.png" alt="7" border="0"></a>
+
+<a href="https://ibb.co/ckHN4kY"><img src="https://i.ibb.co/HBsr5Bh/8.png" alt="8" border="0"></a>
+
+<a href="https://ibb.co/Z2mf0s2"><img src="https://i.ibb.co/6XBykhX/9.png" alt="9" border="0"></a>
 
 ```
 Click > Add a network manually
 ```
 
-![img-10]
+<a href="https://ibb.co/Y8T92rh"><img src="https://i.ibb.co/P4zpxSg/10.png" alt="10" border="0"></a>
 
 Fill in the details.
 
-![img-11]
+<a href="https://ibb.co/YD1MsS7"><img src="https://i.ibb.co/tZvtr6M/11.png" alt="11" border="0"></a>
 
 ```
 Name: Localhost
@@ -284,7 +286,7 @@ Chain Id : 31337
 Symbol: ETH
 ```
 
-![img-12]
+<a href="https://ibb.co/3vFLwkw"><img src="https://i.ibb.co/vhdKbDb/12.png" alt="12" border="0"></a>
 
 Great, we have now created our localhost in Metamask.
 It's important that anvil is running in the background.
@@ -297,12 +299,12 @@ Metamask and paste it into your Account.
 
 Add your private key.
 
-![img-13]
+<a href="https://ibb.co/Tg9XBKh"><img src="https://i.ibb.co/vj05xsz/13.png" alt="13" border="0"></a>
 
 Great it is all working now. We have 10000 Fake ETH in our account.
 This is the same exact process we can add any new network into Metamask.
 
-![img-14]
+<a href="https://ibb.co/4Jx3Yhs"><img src="https://i.ibb.co/SJpGdFQ/14.png" alt="14" border="0"></a>
 
 ## Deploying a Smart Contract with Forge
 
@@ -317,7 +319,7 @@ Input your private keys.
 
 As you can see below, we can see a transaction has gone through.
 
-![img-15]
+<a href="https://ibb.co/tB8CgM2"><img src="https://i.ibb.co/mJ6zkCy/15.png" alt="15" border="0"></a>
 
 However a better way to deploy smart contracts is through scripts.
 
@@ -387,9 +389,11 @@ I have been getting an error message when executing the script:
 There was a typo in my command line.
 Okay the transaction has gone through now. Great.
 
-![img-16]
+<a href="https://ibb.co/C1bjgRj"><img src="https://i.ibb.co/K02tdTt/16.png" alt="16" border="0"></a>
 
 For real production that uses real money, this is not good practice but for development purposes this is fine for now. We will discuss a better way to keep our private keys more secure.
+
+With real money we should use a keystore file. I will research into that later.
 
 **Important side note**
 A great tip for converting from hexadecimal to a decimal value, we can use the following code:
