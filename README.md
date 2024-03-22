@@ -447,6 +447,107 @@ Each new transaction will have a different nonce value.
 
 ## Private Key Safety
 
+Always practice private key saftey protocols.
+Never, ever show your private keys online.
+
+Always use git ignore .env files and store private keys there as a first layer of defense. For testing but never for development.
+
+We need to add multiple layers of defense or defense in depth.
+
+Again, never use .env file for real money or real development/production pipelines.
+
 Okay, so remember when I said, we would come back to storing our private key in a better way than an .env file?
 
 Well, an even better way is through a keystore file.
+
+At the time of this video, private keys can be encrypted using ERC-2335: BLS12-381 under the Ethereum Improvement Proposals.
+
+What this does is encrypt your private keys into a JSON format.
+
+So lets try it out.
+
+When you run Anvil you receive a few default private keys.
+
+Let's use one of them.
+
+The command you will run is:
+
+```
+cast wallet import defaultKey --interactive
+```
+
+It will ask you paste in your private key. Nothing will show though.
+
+Then enter a new password.
+
+<strong>You must remember this!</strong>
+
+It will then return a new address of the keystore.
+For us it is 39fd6e51aad88f6f4ce6ab8827279cfffb92266. Which is an encrypted address of our private key.
+
+You can check you have created it and have it in our cast by:
+
+```
+cast wallet list
+```
+
+It will return:
+
+```
+defaultKey(Local)
+```
+
+Okay, that means it is stored in cast.
+
+What can we do next?
+
+Let's test it out.
+
+Make sure you are running anvil, and the .env file.
+
+Run the following command:
+
+```
+forge script script/DeploySimpleStorage.s.sol:DeploySimpleStorage --rpc-url $RPC_URL --account defaultKey --send 39fd6e51aad88f6f4ce6ab8827279cfffb92266 --broadcast -vvv
+```
+
+It compiles as shown below:
+
+<a href="https://ibb.co/Sf2pmgg"><img src="https://i.ibb.co/z61w2gg/20.png" alt="20" border="0"></a>
+
+It will then ask you to enter your password to complete the transaction. Enter it and see the transaction go through.
+
+<a href="https://ibb.co/sjF2YVX"><img src="https://i.ibb.co/SNKPC3Z/21.png" alt="21" border="0"></a>
+
+Success!
+
+<a href="https://ibb.co/YN3nRgc"><img src="https://i.ibb.co/qDdqy6N/22.png" alt="22" border="0"></a>
+
+**Error handling**
+I am confused...where are the defaultKey stored??
+When I do cast wallet list, it returns `defaultKey`
+however I don't know where it is saved.
+
+That means I cant cat defaultKey or ls defaultKey to see the contents.
+
+**Solution**
+After some documentation research, it is found in the home directory under:
+
+```
+.foundry/keystores/
+```
+
+If must cd into `.foundry/keystores/`
+
+Then we can use:
+
+```
+cat defaultKey
+```
+
+Here you will be able to see the contents of the defaultKey
+which is just a blob of encrypted text.
+
+<a href="https://ibb.co/ZcPtMXz"><img src="https://i.ibb.co/SV8W3yw/23.png" alt="23" border="0"></a>
+
+**Again the main point is never reveal your private keys to the public in any way!**
