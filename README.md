@@ -395,17 +395,58 @@ For real production that uses real money, this is not good practice but for deve
 
 With real money we should use a keystore file. I will research into that later.
 
-**Important side note**
+We will come back to this.
+
+### Transaction Information
+
+So when a transaction is sent the information comes from the `broadcast` folder in run-[name of a file].json file.
+
+Within that file, the transaction details being sent is coming from the `transaction` key object.
+
+<a href="https://ibb.co/3sgsQYG"><img src="https://i.ibb.co/0XHXvV8/17.png" alt="17" border="0"></a>
+
+We can see a lot of key value pairs from this `transaction` key object: such as:
+
+`type`, `from`, `gas`, `value`, `data`, `nonce` and `accessList`.
+
+This transaction key object is critical and will send all the data in the transaction. This transaction also will need to be signed by the private key of the externally owned account (EOA). This is stored in variables called v, r, s.
+
+v,r,s are signature variables generated from the EOA's private keys and it is used for digital signatures creation and verification.
+
+We won't get into the details too much, and I am still learning about this, but this is what ChatGPT spat out. Basically, v,r,s form a digital signature which acts like a seal on a transaction.
+
+v (Recovery ID): Think of v as a small piece of information that helps identify which chain the transaction is meant for. It's like a label that says, "This transaction is for Ethereum chain A" or "This transaction is for Ethereum chain B".
+
+r (R value of the Signature): Imagine r as a unique marker generated from the sender's secret code (private key) and the transaction details. It's like a special stamp that proves the sender's identity and authenticity.
+
+s (S value of the Signature): s is another part of the signature that confirms the transaction's authenticity. It's like the second part of the special stamp, completing the validation process.
+
+These are the data values that are sent to an API endpoint.
+
+As you can, the value of `gas` is a hexadecimal. How can we view it as a decimal value.
+
+**TIP!**
 A great tip for converting from hexadecimal to a decimal value, we can use the following code:
 
 ```
-cast --base-to <hexadecimal> dec
+cast --to-base <hexadecimal> dec
 ```
 
 This will convert a hex number to a decimal value.
-So this is great if you want to find out the gas value.
-Gas values are stored as hexadecimal.
+So this is great if you want to find out the gas value. Gas values are stored as hexadecimal.
 
-If you look in the broadaast folder and under the "transaction" key object you can see all gas, value, data, type, from, nonce and accessList.
+<a href="https://ibb.co/cYtvJcp"><img src="https://i.ibb.co/VwDNVWh/18.png" alt="18" border="0"></a>
 
-This transaction key object is critical and will send all the data in the transaction. This transaction also will need to be signed by the private key under the hood.
+You can see it will return a decimal value.
+
+<a href="https://ibb.co/6rWs8j9"><img src="https://i.ibb.co/7j1yQsM/19.png" alt="19" border="0"></a>
+
+The `nonce` is also very important because it will count your transactions. This is very helpful for if you want to go back and see your transaction history or replay a transaction, you would check the nonce value associated with the transaction.
+
+Each new transaction will have a different nonce value.
+
+## Private Key Safety
+
+Okay, so remember when I said, we would come back to storing our private key in a better way than an .env file?
+
+Well, an even better way is through a keystore file.
