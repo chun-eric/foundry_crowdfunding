@@ -551,3 +551,87 @@ which is just a blob of encrypted text.
 <a href="https://ibb.co/ZcPtMXz"><img src="https://i.ibb.co/SV8W3yw/23.png" alt="23" border="0"></a>
 
 **Again the main point is never reveal your private keys to the public in any way!**
+
+## Interact with Contract Addresses (CLI)
+
+Foundry has a bunch of commands that you can interact with contract addresses.
+
+One of them is called `send`.
+
+Let's say we want to call the store function (orange button) we created in Remix previously from the CLI. How do we do that?
+
+<a href="https://ibb.co/3B0HkpR"><img src="https://i.ibb.co/kQhFM4m/24.png" alt="24" border="0"></a>
+
+We write the following command:
+
+```
+cast send <Address destination> <signature or "function(parameters)"> <arguments to pass> --rpc-url $RPC_URL --account defaultKey (or --private-key $PRIVATE_KEY)
+
+Let's send it to our Remix address
+
+Example:
+cast send 0xd9145CCE52D386f254917e481eB44e9943F39138 "store(uint256)" 123123 --rpc-url $RPC_URL --account defaultKey
+```
+
+It worked!
+
+However shouldnt the address destination be addressed to us?
+Hmm....a little confused on the address destination. I think it should be our public address.
+
+Below is the image of our transaction.
+
+<a href="https://ibb.co/0tJXkm2"><img src="https://i.ibb.co/M6NhbZS/25.png" alt="25" border="0"></a>
+
+So, how do we read this value that we stored?
+
+We use a new command > `cast call`.
+
+This will read the value or call the value. It is like calling
+one of the blue buttons in Remix. It is calling not sending a
+transaction.
+
+So, in order for us retrieve the value. This is the command.
+
+```
+cast call <destination of transaction> <signature of call function> <args of function call>
+
+Example:
+
+cast call 0xd9145CCE52D386f254917e481eB44e9943F39138 "retrieve()"
+
+```
+
+<a href="https://ibb.co/L1ZZZfW"><img src="https://i.ibb.co/fHxxx75/26.png" alt="26" border="0"></a>
+
+This will return a hex value back.
+We need to convert it to a decimal value.
+Howeve I am getting 0x error.
+Seems like my address destination is the problem.
+I will have to leave it here for now and come back later.
+
+I figured out the error!
+The destination address should be address of the DeploySimpleStorage.
+
+<a href="https://ibb.co/6n1wYVQ"><img src="https://i.ibb.co/bW2m1qt/27.png" alt="27" border="0"></a>
+
+Let's run the same `cast send` this time with the correct contract address. The transaction has gone through.
+
+<a href="https://ibb.co/X8jxWYG"><img src="https://i.ibb.co/vYV4cXM/28.png" alt="28" border="0"></a>
+
+Run the cast call command with the retrieve function. This time it returns a hex value! Alright!
+
+<a href="https://ibb.co/m8Q12k0"><img src="https://i.ibb.co/hfph4bc/29.png" alt="29" border="0"></a>
+
+Convert the hex to decimal.
+Run this command:
+
+```
+cast --to-base <hex value> dec
+```
+
+This will call the number we inputted. It should be 123123.
+Alright! Phew, this took a lot of time.
+
+<a href="https://ibb.co/xmYjqSn"><img src="https://i.ibb.co/n3BcMsX/30.png" alt="30" border="0"></a>
+
+Let's move onto the next section.
