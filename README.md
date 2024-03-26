@@ -508,7 +508,7 @@ Make sure you are running anvil, and the .env file.
 Run the following command:
 
 ```
-forge script script/DeploySimpleStorage.s.sol:DeploySimpleStorage --rpc-url $RPC_URL --account defaultKey --send 39fd6e51aad88f6f4ce6ab8827279cfffb92266 --broadcast -vvv
+forge script script/DeploySimpleStorage.s.sol:DeploySimpleStorage --rpc-url $RPC_URL --account defaultKey --sender 39fd6e51aad88f6f4ce6ab8827279cfffb92266 --broadcast -vvv
 ```
 
 It compiles as shown below:
